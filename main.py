@@ -1,5 +1,6 @@
 from mastodon import Mastodon
 from datetime import date
+import os
 
 # get today's word from file war-and-peace.txt
 # starting the count from 2026-8-29.
@@ -10,7 +11,7 @@ with open("./war-and-peace.txt", "r") as file:
 
 # post it on mastodon
 mastodon: Mastodon = Mastodon(
-        access_token = "token.secret",
+        access_token = os.environ["API_SECRET"],
         api_base_url = "https://mastodon.social"
     )
 mastodon.status_post(word)
